@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",// определяет каталог, в который компилятор TypeScript будет выводить (создавать) скомпилированные JavaScript-файлы. Не важно, т.к. папка для компиляции определяется вебпаком
+    "noImplicitAny": true,
+    "module": "ESNext", // Определяет, какой модульный формат должен использоваться при компиляции TypeScript-кода в JavaScript. TypeScript будет компилировать код с учетом современных возможностей модульной системы, таких как import и export, предоставляемых ES6 и последующими версиями JavaScript.
+    "target": "es5", // в какую спецификацию компилировать. Нужно для поддержки браузеров
+    "jsx": "react-jsx", // Позволяет не импортировать в каждый файл компонента React. Доступно с 17 версии React
+    "allowJs": true, // Позволяет компилятору обрабатывать не только ts, но и js файлы
+    "moduleResolution": "node",
+    // Если какая-то библиотека не имеют default import
+    // Лоадеры вроде ts-loader или babel-loader автоматически создают из
+    // вместо import * as React from 'react'
+    // можно писать import React from 'react'
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, // Позволяет использовать вместо require() и module.export в ноде import/exports
+//    "baseUrl": "." // . - текущая папка, для абсолютного пути
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS" // Нужно, чтоб при настройке в "module": "ESNext" работали импорты, экспорты. см.доку
+    }
+  }
+}
