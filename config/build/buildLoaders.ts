@@ -6,6 +6,11 @@ import { BuildOptions } from "./types/config";
 // Порядок имеет значение
 export function buildLoaders({isDev}:BuildOptions):webpack.RuleSetRule[] {
 
+    const svgLoader = {
+        test: /\.svg$/, // Преобразовывает svg в реакт-компоненты. Только для svg. Обработать другие форматы он не сможет. Для других форматов юзаем file-loader
+        use: ['@svgr/webpack'],
+    }
+
     const cssLoader = {
             test: /\.s[ac]ss$/i,
             use: [
@@ -34,7 +39,18 @@ export function buildLoaders({isDev}:BuildOptions):webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
 
+    const fileLoader = {
+            test: /\.(png|jpe?g|gif|woff2|woff)$/i, // Картинки, шрифты, и т.д.
+            use: [
+                {
+                    loader: 'file-loader',
+                },
+            ],
+     }
+
     return [
+        fileLoader,
+        svgLoader,
         typescriptLoader,
         cssLoader
     ]
