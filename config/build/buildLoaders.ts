@@ -14,7 +14,10 @@ export function buildLoaders({isDev}:BuildOptions):webpack.RuleSetRule[] {
                     loader: "css-loader", // Translates CSS into CommonJS
                     options: {
                         modules:{
-                            auto:(resPath:string) => Boolean(resPath.includes('.module.')), // Необходимо чтоб имена уникальные имена для стилей создавались только для файлов, которые имеют somename.module.scss. Иначе для глобальных классов они тоже создаются, и не применяются.
+                            auto:(resPath:string) => Boolean(resPath.includes('.module.')), // Необходимо чтоб имена уникальные имена для стилей создавались только для файлов, которые имеют somename.module.scss.
+                            // Иначе для глобальных классов они тоже создаются, и не применяются.
+                            // В дев сборке в тулзах на странице index.html мы увидим 2 тега style.
+                            // В одном лежат не модульные стили, в другом модульные
                             localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]' // Имена файлов
                         },
                     }

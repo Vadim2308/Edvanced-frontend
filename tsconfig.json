@@ -13,7 +13,7 @@
     // можно писать import React from 'react'
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true, // Позволяет использовать вместо require() и module.export в ноде import/exports
-    "baseUrl": ".", // . - текущая папка, для абсолютного пути
+    "baseUrl": ".", // . - текущая папка, для абсолютного пути. Это только для тс, но вебпаку тоже надо знать об этих импортах. см buildResolvers
     "paths": {
       "*": ["./src/*"]
     }
