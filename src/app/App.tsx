@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {useTheme} from "app/providers/ThemeProvider";
 import "./styles/index.scss"
 import {classNames} from "shared/lib/classNames";
@@ -11,15 +11,19 @@ export enum Theme {
     DARK = 'dark'
 }
 
+
 export const App = () => {
     const {theme} = useTheme()
     return (
         <div className={classNames('app',{},[theme])}>
-            <Navbar/>
-            <div className='content-page'>
-                <Sidebar/>
-                <AppRouter/>
-            </div>
+            {/*Suspense для интернационализации i18n*/}
+            <Suspense fallback="">
+                <Navbar/>
+                <div className='content-page'>
+                    <Sidebar/>
+                    <AppRouter/>
+                </div>
+            </Suspense>
         </div>
     );
 };
