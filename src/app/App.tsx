@@ -1,10 +1,10 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import {Link, Route, Routes} from 'react-router-dom';
+import {useTheme} from "app/providers/ThemeProvider";
 import "./styles/index.scss"
-import {AboutPageAsync} from "./components/pages/AboutPage/AboutPage.async";
-import {MainPageAsync} from "./components/pages/MainPage/MainPage.async";
-import {useTheme} from "./theme/useTheme";
-import {classNames} from "./helpers/classNames/classNames";
+import {AboutPage} from "pages/AboutPage";
+import {MainPage} from "pages/MainPage";
+import {classNames} from "shared/lib/classNames";
 
 export enum Theme {
     LIGHT='light',
@@ -20,11 +20,10 @@ export const App = () => {
             <Link to="/about">О сайте</Link>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
-                        <Route path="/about" element={<AboutPageAsync/>}/>
-                        <Route path="/" element={<MainPageAsync/>}/>
+                        <Route path="/about" element={<AboutPage/>}/>
+                        <Route path="/" element={<MainPage/>}/>
                     </Routes>
                 </Suspense>
-
         </div>
     );
 };

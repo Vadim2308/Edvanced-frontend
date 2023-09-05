@@ -1,7 +1,5 @@
 import { BuildOptions } from "./types/config";
 import type {Configuration as DevServerConfigurations } from 'webpack-dev-server'
-import path from "path";
-
 export function buildDevServer(options:BuildOptions):DevServerConfigurations {
     return {
         https:true,

@@ -10,6 +10,7 @@ export default (env:BuildEnv):webpack.Configuration => {
         entry: path.resolve(__dirname,'src','index.tsx'), // Входная точка приложения,
         build: path.resolve(__dirname,'build'), // Название папки, в которой будет лежать сборка. Относительно файла конфига,
         html: path.resolve(__dirname,'public','index.html'),
+        src: path.resolve(__dirname,'src'),
     }
 
     const mode = env.mode || 'development'

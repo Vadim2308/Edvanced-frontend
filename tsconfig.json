@@ -13,7 +13,10 @@
     // можно писать import React from 'react'
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true, // Позволяет использовать вместо require() и module.export в ноде import/exports
-//    "baseUrl": "." // . - текущая папка, для абсолютного пути
+    "baseUrl": ".", // . - текущая папка, для абсолютного пути
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {
