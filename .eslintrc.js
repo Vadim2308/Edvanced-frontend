@@ -43,11 +43,17 @@ module.exports = {
     'no-void': 'off',
     'i18next/no-literal-string': [
       'error',
-      { markupOnly: true, ignoreAttribute: ['aria-label'] },
+      { markupOnly: true, ignoreAttribute: ['aria-label', 'data-testid'] },
     ], // Выкидывает ошибку, если мы какую либо стрингу не заворачиваем в перевод. markupOnly - только для tsx/jsx
     'max-len': ['error', { ignoreComments: true, code: 100 }],
   },
   globals: {
     __IS_DEV__: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx }'],
+      rules: { 'i18next/no-literal-string': 'off' }, // Отключаем это правило для тестов
+    },
+  ],
 };
