@@ -16,11 +16,17 @@ export const Sidebar = ({ className }: SidebarProps) => {
   };
   return (
     <div
+      data-testid='sidebar'
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
         className,
       ])}
     >
-      <button aria-label='toggle language' type='button' onClick={onToggle}>
+      <button
+        data-testid='sidebar-toggle'
+        aria-label='toggle language'
+        type='button'
+        onClick={onToggle}
+      >
         toggle
       </button>
       <div className={cls.switchers}>

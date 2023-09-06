@@ -22,5 +22,10 @@
     "compilerOptions": {
       "module": "CommonJS" // Нужно, чтоб при настройке в "module": "ESNext" работали импорты, экспорты. см.доку
     }
-  }
+  },
+  "include": [
+  "src/**/*.ts",
+  "src/**/*.tsx",
+  "./config/jest/setupTests.ts" // Для тестирования jest
+  ]
 }
