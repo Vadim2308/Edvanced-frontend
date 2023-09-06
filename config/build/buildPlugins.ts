@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -17,6 +18,9 @@ export function buildPlugins({
       // Этот плагин извлекает CSS в отдельные файлы. Он создает файл CSS для каждого файла JS, который содержит CSS. По дефолту вебпак все стили складывает в бандл, где лежит весь js. Это не очень хорошо, поэтому оттуда эти стили надо выдернуть
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css', // Как будут называться чанки, которые будут подгружаться лениво
+    }),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
     }),
     new webpack.DefinePlugin({
       // Плагин, с помощью которого можно прокидывать глобальные переменные
