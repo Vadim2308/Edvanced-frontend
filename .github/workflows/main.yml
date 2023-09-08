@@ -31,8 +31,7 @@ jobs:
 #      - name: build storybook
 #        run: npm run storybook:build
       - name: Start Storybook
-        run: npm run storybook & # Запустить Storybook в фоновом режиме
-        background: true # Запустить команду в фоновом режиме
+        run: npm run storybook # Запустить Storybook в фоновом режиме
 
       - name: Run Loki Tests
         run: npx loki test # Запустить тесты с помощью Loki
