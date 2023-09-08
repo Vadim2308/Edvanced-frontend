@@ -8,7 +8,7 @@ export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       // Создает HTML в build папке
       template: paths.html, // где лежит темплейт с html
@@ -19,12 +19,18 @@ export function buildPlugins({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css', // Как будут называться чанки, которые будут подгружаться лениво
     }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
     new webpack.DefinePlugin({
       // Плагин, с помощью которого можно прокидывать глобальные переменные
       __IS_DEV__: JSON.stringify(isDev),
     }),
   ];
+
+  if (isDev) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
+    );
+  }
+  return plugins;
 }
