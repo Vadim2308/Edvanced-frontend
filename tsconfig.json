@@ -24,8 +24,8 @@
     }
   },
   "include": [
-  "src/**/*.ts",
-  "src/**/*.tsx",
-  "./config/jest/setupTests.ts" // Для тестирования jest
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./config/jest/setupTests.ts" // Для тестирования jest
   ]
 }
