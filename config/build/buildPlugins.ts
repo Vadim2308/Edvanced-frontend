@@ -32,5 +32,6 @@ export function buildPlugins({
       }),
     );
   }
+
   return plugins;
 }
