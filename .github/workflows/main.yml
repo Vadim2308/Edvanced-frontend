@@ -1,0 +1,36 @@
+name: linting testing building
+run-name: ${{ github.actor }} is run CI Actions 🚀
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm install
+      - name: linting typescript
+        run: npm run lint:ts
+        # if: always() -  Запускаем их в любом случае даже если предыдущий упад
+        if: always()
+      - name: linting css
+        run: npm run lint:scss
+        if: always()
+      - name: unit testing
+        run: npm run test:unit
+        if: always()
+      # - name: screenshot testing
+      #   run: npm run test:ui:ci
+      # Делаем production сборку
+      - name: build production project
+        run: npm run build:prod
