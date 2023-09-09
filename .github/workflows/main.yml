@@ -21,7 +21,7 @@ jobs:
         run: npm install
       - name: linting typescript
         run: npm run lint:ts
-      # if: always() -  Запускаем их в любом случае даже если предыдущий упад
+        # if: always() -  Запускаем их в любом случае даже если предыдущий упад
         if: always()
       - name: linting css
         run: npm run lint:scss
