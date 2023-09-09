@@ -30,6 +30,12 @@ jobs:
         run: npm run test:unit
       - name: screenshot testing
         run: npm run test:ui:ci
+      - name: Archive screenshots
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: design-system
+          path: .loki
       # Делаем production сборку
       - name: build production project
         run: npm run build:prod
