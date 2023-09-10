@@ -9,7 +9,7 @@ export const App = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={classNames('app', {}, [theme])}>
+    <div className={classNames(`${theme}`, {}, ['app'])}>
       {/* Suspense для интернационализации i18n */}
       <Suspense fallback=''>
         <Navbar />
