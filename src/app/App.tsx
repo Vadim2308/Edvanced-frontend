@@ -9,7 +9,7 @@ export const App = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={classNames(`${theme}`, {}, ['app'])}>
+    <div id='app_container' className={classNames(`${theme}`, {}, ['app'])}>
       {/* Suspense для интернационализации i18n */}
       <Suspense fallback=''>
         <Navbar />
@@ -18,7 +18,6 @@ export const App = () => {
           <AppRouter />
         </div>
       </Suspense>
-      <div id='portal' />
     </div>
   );
 };
