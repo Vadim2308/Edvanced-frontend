@@ -13,9 +13,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
     entry: '',
     build: '',
   };
-  config.resolve.modules.push(paths.src);
-  config.resolve.extensions.push('.ts', '.tsx');
 
+  config.resolve.modules = [paths.src, 'node_modules'];
+  config.resolve.extensions.push('.ts', '.tsx');
   // Убираем стандартный обработчик svg, который зашит в сторибуке, и заменяем неа свой
   // eslint-disable-next-line no-param-reassign
   config.module.rules = config.module.rules.map((rule: webpack.RuleSetRule) => {
@@ -33,6 +33,12 @@ export default ({ config }: { config: webpack.Configuration }) => {
     test: /\.scss$/,
     use: ['style-loader', 'css-loader', 'sass-loader'],
   });
+
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      __IS_DEV__: true,
+    }),
+  );
 
   return config;
 };

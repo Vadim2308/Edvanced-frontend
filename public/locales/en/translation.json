@@ -7,9 +7,13 @@
   "Произошла непредвиденная ошибка": "There was an unforeseen error",
   "Обновить страницу": "Refresh page",
   "throw error": "throw error",
-  "Главная": "Главная",
+  "Главная": "Main",
   "Короткий язык": "En",
   "Войти": "Login",
   "Введите пароль": "Enter password",
-  "Введите username": "Enter username"
+  "Введите username": "Enter username",
+  "Форма авторизации": "Authorization form",
+  "Вы ввели неверный логин или пароль": "You have entered an incorrect login or password",
+  "Выйти": "Logout",
+  "О сайте": "About"
 }
