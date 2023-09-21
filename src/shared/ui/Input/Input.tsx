@@ -10,7 +10,7 @@ import {
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
-  InputHTMLAttributes<HTMLButtonElement>,
+  InputHTMLAttributes<HTMLInputElement>,
   'onChange' | 'value'
 >;
 

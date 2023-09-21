@@ -6,6 +6,6 @@ export const MainPageAsync = lazy(
       setTimeout(() => {
         // @ts-ignore
         resolve(import('./MainPage'));
-      }, 1500);
+      }, 100);
     }),
 );

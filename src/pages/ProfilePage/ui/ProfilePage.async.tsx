@@ -6,6 +6,6 @@ export const ProfilePageAsync = lazy(
       setTimeout(() => {
         // @ts-ignore
         resolve(import('./ProfilePage'));
-      }, 1500);
+      }, 100);
     }),
 );
