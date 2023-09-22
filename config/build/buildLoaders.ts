@@ -32,7 +32,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
   };
 
   const fileLoader = {
-    test: /\.(png|jpe?g|gif|woff2|woff)$/i, // Картинки, шрифты, и т.д.
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i, // Картинки, шрифты, и т.д. Можно импортить (н-р import AvatarImg from './storybook.jpeg') и в AvatarImg будет храниться ссылка на эту картинку
     use: [
       {
         loader: 'file-loader',
