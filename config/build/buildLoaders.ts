@@ -1,26 +1,19 @@
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCssLoaders } from './loaders/buildCssLoaders';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 // лоадеры предназначены для того, чтоб обрабатывать файлы, которые выходят за рамки js. Jpeg png scss ts gif svg и т.д.
 // Порядок имеет значение
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+  const { isDev } = options;
   const svgLoader = {
     test: /\.svg$/, // Преобразовывает svg в реакт-компоненты. Только для svg. Обработать другие форматы он не сможет. Для других форматов юзаем file-loader
     use: ['@svgr/webpack'],
   };
 
   // Транспилирует код из ECMA 2015 на более ранние стандарты. Когда выкатывают новые фичи, не все браузеры сразу их поддерживают. Мы можем не ждать обновлений, а сразу использовать новые фичи стандартов. Babel также полифилит новые методы и т.д.
-  const babelLoader = {
-    test: /\.(js|jsx|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader(options);
 
   const cssLoader = buildCssLoaders(isDev);
 
