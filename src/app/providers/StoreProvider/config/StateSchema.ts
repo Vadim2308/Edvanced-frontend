@@ -11,6 +11,7 @@ import type {
 import type { ProfileSchema } from 'entities/Profile';
 import type { AxiosInstance } from 'axios';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
+import type { ArticleDetailsSchema } from 'entities/Article';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -18,6 +19,7 @@ export interface StateSchema {
   // Асинхронные редьюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

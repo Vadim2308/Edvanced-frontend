@@ -14,6 +14,7 @@ export default {
 } as Meta<typeof ProfileCard>;
 
 const Template: StoryFn<typeof ProfileCard> = (args) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <ProfileCard {...args} />
 );
 

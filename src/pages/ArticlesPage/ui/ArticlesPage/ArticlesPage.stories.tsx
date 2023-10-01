@@ -12,6 +12,7 @@ export default {
 } as Meta<typeof ArticlesPage>;
 
 const Template: StoryFn<typeof ArticlesPage> = (args) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <ArticlesPage {...args} />
 );
 
