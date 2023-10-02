@@ -9,7 +9,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: ['ru', 'en'], // Указываем названия папок, в public/locales
     debug: __IS_DEV__,
 
     interpolation: {
