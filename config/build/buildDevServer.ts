@@ -3,7 +3,7 @@ import { BuildOptions } from './types/config';
 
 export function buildDevServer(options: BuildOptions): DevServerConfigurations {
   return {
-    https: true,
+    https: false,
     port: options.port,
     open: true, // Автоматически открывать в браузере страницу с приложением,
     historyApiFallback: true, // При выключенной опции, даже когда в роутере приложения все норм,

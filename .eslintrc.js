@@ -55,6 +55,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
+    'react/no-array-index-key': 'off',
   },
   globals: {
     __IS_DEV__: true,

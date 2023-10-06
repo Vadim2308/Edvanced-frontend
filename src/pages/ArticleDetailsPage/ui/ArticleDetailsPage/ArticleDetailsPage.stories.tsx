@@ -30,6 +30,11 @@ const article: Article = {
   views: 1022,
   createdAt: '26.02.2022',
   type: [ArticleType.IT],
+  user: {
+    username: 'Ulbi TV',
+    id: '1',
+    avatar: 'link',
+  },
   blocks: [
     {
       id: '1',
