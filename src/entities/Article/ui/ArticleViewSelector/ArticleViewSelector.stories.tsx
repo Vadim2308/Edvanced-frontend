@@ -11,8 +11,8 @@ export default {
   },
 } as Meta<typeof ArticleViewSelector>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: StoryFn<typeof ArticleViewSelector> = (args) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <ArticleViewSelector {...args} />
 );
 
