@@ -15,6 +15,7 @@ export function buildPlugins({
     new HtmlWebpackPlugin({
       // Создает HTML в build папке
       template: paths.html, // где лежит темплейт с html
+      publicPath: '/',
     }),
     new webpack.ProgressPlugin(), // Ход текущей сборки в консоли
     new MiniCssExtractPlugin({

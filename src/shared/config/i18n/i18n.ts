@@ -10,7 +10,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: ['ru', 'en'], // Указываем названия папок, в public/locales
-    debug: __IS_DEV__,
+    debug: false,
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

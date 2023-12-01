@@ -10,7 +10,6 @@ import type {
 } from '@reduxjs/toolkit';
 import type { ProfileSchema } from 'entities/Profile';
 import type { AxiosInstance } from 'axios';
-import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { ArticleDetailsSchema } from 'entities/Article';
 import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';
@@ -43,7 +42,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: NavigateFunction;
 }
 
 export interface ThunkConfig<T> {
