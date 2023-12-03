@@ -1,56 +1,45 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import React, { memo, MutableRefObject, ReactNode, useRef } from 'react';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { getUIScrollByPath, uiActions } from 'features/UI';
 import { useLocation } from 'react-router-dom';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { useSelector } from 'react-redux';
-import { useDebounce } from 'shared/lib/hooks/useDebounce';
+import { useScrollRestoration } from 'shared/lib/hooks/useScrollRestoration';
 import cls from './Page.module.scss';
 
 interface PageProps {
-  className?: string;
   children: ReactNode;
   onScrollEnd?: () => void;
+  scrollRestoration?: boolean;
+  className?: string;
 }
 
 export const Page = memo((props: PageProps) => {
-  const { className, children, onScrollEnd } = props;
-  const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const { className, children, onScrollEnd, scrollRestoration } = props;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+
   const { pathname } = useLocation();
-  const scrollPosition = useSelector(getUIScrollByPath)(pathname);
 
-  const dispatch = useAppDispatch();
-
-  useInitialEffect(() => {
-    wrapperRef.current.scrollTop = scrollPosition; // Наблюдались баги в хроме со скроллом при маунте
+  const { ref } = useScrollRestoration<HTMLDivElement>(pathname, {
+    persist: 'sessionStorage',
   });
+  const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
+
+  const currentWrapperRef = scrollRestoration
+    ? (ref as MutableRefObject<HTMLDivElement>)
+    : wrapperRef;
 
   useInfiniteScroll({
     triggerRef,
-    wrapperRef,
+    wrapperRef: currentWrapperRef,
     callback: onScrollEnd,
   });
 
-  const onScroll = useDebounce((e: UIEvent<HTMLDivElement>) => {
-    dispatch(
-      uiActions.setScrollPosition({
-        position: (e.target as HTMLElement).scrollTop,
-        path: pathname,
-      }),
-    );
-  }, 100);
-
   return (
     <div
-      onScroll={onScroll}
-      ref={wrapperRef}
+      ref={currentWrapperRef}
       className={classNames(cls.Page, {}, [className])}
     >
       {children}
-      <div ref={triggerRef} />
+      <div id='triggerRef' ref={triggerRef} />
     </div>
   );
 });

@@ -62,6 +62,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
       <Page
         onScrollEnd={onLoadNextPart}
         className={classNames(cls.ArticlesPage, {}, [className])}
+        scrollRestoration
       >
         <ArticleViewSelector view={view} onViewClick={onChangeView} />
         <ArticleList isLoading={isLoading} view={view} articles={articles} />
