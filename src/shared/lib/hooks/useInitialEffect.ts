@@ -5,9 +5,6 @@ export const useInitialEffect = (callback: () => void) => {
     if (__PROJECT__ !== 'storybook') {
       callback();
     }
-    // return () => {
-    //   console.log('unmount');
-    // };
     // eslint-disable-next-line
   }, []);
 };
