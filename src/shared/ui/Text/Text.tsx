@@ -4,6 +4,7 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
   PRIMARY = 'primary',
+  INVERTED = 'inverted',
   ERROR = 'error',
 }
 
@@ -39,7 +40,7 @@ export const Text = memo((props: TextProps) => {
 
   return (
     <div
-      className={classNames(cls.Text, {}, [
+      className={classNames('', {}, [
         className,
         cls[theme],
         cls[align],
