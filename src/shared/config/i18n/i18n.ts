@@ -9,9 +9,9 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    load: 'languageOnly', // Обязательная настройка, иначе будут грузиться переводы еще по дефолтным путям /ru-RU/ и т.д. И будут спамить 404 ошибками
     fallbackLng: ['ru', 'en'], // Указываем названия папок, в public/locales
     debug: false,
-
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
