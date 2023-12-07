@@ -7,6 +7,7 @@ export const $api = axios.create({
 
 $api.interceptors.request.use((config) => {
   if (config.headers) {
+    config.headers['Access-Control-Max-Age'] = 3600;
     config.headers.Authorization =
       localStorage.getItem(USER_LOCALSTORAGE_KEY) || '';
   }
