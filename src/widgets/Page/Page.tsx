@@ -12,6 +12,8 @@ interface PageProps {
   className?: string;
 }
 
+export const PAGE_ID = 'PAGE_ID';
+
 export const Page = memo((props: PageProps) => {
   const { className, children, onScrollEnd, scrollRestoration } = props;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -34,7 +36,8 @@ export const Page = memo((props: PageProps) => {
   });
 
   return (
-    <div
+    <section
+      id={PAGE_ID}
       ref={currentWrapperRef}
       className={classNames(cls.Page, {}, [className])}
     >
@@ -42,6 +45,6 @@ export const Page = memo((props: PageProps) => {
       {onScrollEnd && (
         <div id='triggerRef' className={cls.trigger} ref={triggerRef} />
       )}
-    </div>
+    </section>
   );
 });

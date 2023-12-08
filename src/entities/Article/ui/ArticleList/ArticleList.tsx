@@ -3,6 +3,8 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { List, ListRowRenderer, WindowScroller } from 'react-virtualized';
+import { PAGE_ID } from 'widgets/Page/Page';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
@@ -31,15 +33,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
     isLoading,
   } = props;
   const { t } = useTranslation();
-  const renderArticle = (article: Article) => (
-    <ArticleListItem
-      article={article}
-      view={view}
-      className={cls.card}
-      key={article.id}
-      target={target}
-    />
-  );
+
+  const pageRef = document.getElementById(PAGE_ID) as Element;
 
   if (!isLoading && !articles.length) {
     return (
@@ -49,10 +44,68 @@ export const ArticleList = memo((props: ArticleListProps) => {
     );
   }
 
+  const isBig = view === ArticleView.BIG;
+
+  const { clientWidth } = pageRef;
+
+  const totalElementInRow = Math.abs(Math.ceil((clientWidth - 45 - 20) / 300)); // P.S костыли, Необходимо считать ширину карточки не на хардкорных значениях
+  // eslint-disable-next-line no-nested-ternary
+  const itemsPerRow = isBig ? 1 : totalElementInRow < 3 ? 3 : totalElementInRow;
+  const rowCount = isBig
+    ? articles.length
+    : Math.ceil(articles.length / itemsPerRow);
+
+  const rowRenderer: ListRowRenderer = ({ index, key, style }) => {
+    const items = [];
+    const fromIndex = index * itemsPerRow;
+    const toIndex = Math.min(fromIndex + itemsPerRow, articles.length);
+    for (let i = fromIndex; i < toIndex; i++) {
+      items.push(
+        <ArticleListItem
+          article={articles[i]}
+          view={view}
+          className={cls.card}
+          key={articles[i].id}
+          target={target}
+        />,
+      );
+    }
+    return (
+      <div key={key} style={style} className={cls.row}>
+        {items}
+      </div>
+    );
+  };
+
   return (
-    <div className={classNames(cls.wrapper, {}, [className, cls[view]])}>
-      {articles.length > 0 ? articles.map(renderArticle) : null}
-      {isLoading && getSkeletons(view)}
-    </div>
+    // P.S. дикие костыли с хардкодами в курсе. Для вирт.скролла использовать более новые библиотеки
+    <WindowScroller scrollElement={pageRef}>
+      {({
+        width,
+        height,
+        registerChild,
+        scrollTop,
+        isScrolling,
+        onChildScroll,
+      }) => (
+        <div
+          ref={registerChild}
+          className={classNames(cls.wrapper, {}, [className, cls[view]])}
+        >
+          <List
+            autoHeight
+            rowCount={rowCount}
+            height={height ?? 700}
+            rowHeight={isBig ? 700 : 330}
+            rowRenderer={rowRenderer}
+            width={width ? width - 80 : 700}
+            onScroll={onChildScroll}
+            isScrolling={isScrolling}
+            scrollTop={scrollTop}
+          />
+          {isLoading && getSkeletons(view)}
+        </div>
+      )}
+    </WindowScroller>
   );
 });
