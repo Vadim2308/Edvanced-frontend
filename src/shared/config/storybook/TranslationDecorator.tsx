@@ -1,7 +1,7 @@
 import { I18nextProvider } from 'react-i18next';
 import { StoryFn } from '@storybook/react';
-import i18n from 'shared/config/i18n/i18nForTest';
 import React, { Suspense } from 'react';
+import i18n from '../i18n/i18nForTest';
 
 export const TranslationDecorator = (Story: StoryFn) => (
   <Suspense fallback=''>

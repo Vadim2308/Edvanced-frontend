@@ -18,7 +18,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'i18next',
+    'react-hooks',
+    'study-type-checker',
+  ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
@@ -56,6 +62,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
     'react/no-array-index-key': 'off',
+    'study-type-checker/path-checker': 'error',
   },
   globals: {
     __IS_DEV__: true,
