@@ -11,8 +11,8 @@ export default {
   },
 } as Meta<typeof ArticleDetailsPageHeader>;
 
-const Template: StoryFn<typeof ArticleDetailsPageHeader> = (args) => (
-  <ArticleDetailsPageHeader {...args} />
+const Template: StoryFn<typeof ArticleDetailsPageHeader> = () => (
+  <ArticleDetailsPageHeader />
 );
 
 export const Normal = Template.bind({});

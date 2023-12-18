@@ -12,6 +12,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     html: '',
     entry: '',
     build: '',
+    locales: '',
+    buildLocales: '',
   };
 
   config!.resolve!.modules = [paths.src, 'node_modules'];

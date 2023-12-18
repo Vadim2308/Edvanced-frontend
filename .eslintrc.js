@@ -53,7 +53,18 @@ module.exports = {
       'error',
       {
         markupOnly: true,
-        ignoreAttribute: ['aria-label', 'data-testid', 'to', 'alt', 'target'],
+        ignoreAttribute: [
+          'aria-label',
+          'data-testid',
+          'to',
+          'alt',
+          'target',
+          'direction',
+          'justify',
+          'align',
+          'gap',
+          'max',
+        ],
       },
     ], // Выкидывает ошибку, если мы какую либо стрингу не заворачиваем в перевод. markupOnly - только для tsx/jsx
     'max-len': ['error', { ignoreComments: true, code: 130 }],
