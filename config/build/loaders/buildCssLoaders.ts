@@ -21,7 +21,7 @@ export function buildCssLoaders(isDev: boolean) {
             // В дев сборке в тулзах на странице index.html мы увидим 2 тега style.
             // В одном лежат не модульные стили, в другом модульные
             localIdentName: isDev
-              ? '[path][name]__[local]--[hash:base64:5]'
+              ? '[name]__[local]--[hash:base64:5]'
               : '[hash:base64:8]', // Имена файлов
           },
         },
