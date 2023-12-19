@@ -3,14 +3,6 @@ import { StoryFn, Meta } from '@storybook/react';
 
 import { ListBox } from './ListBox';
 
-const people = [
-  { id: 1, value: 'Durward Reynolds', content: 'Durward Reynolds' },
-  { id: 2, value: 'Kenton Towne', content: 'Kenton' },
-  { id: 3, value: 'Therese Wunsch', content: 'Therese Wunsch' },
-  { id: 4, value: 'Benedict Kessler', content: 'Benedict Kessler' },
-  { id: 5, value: 'Katelyn Rohan', content: 'Katelyn Rohan', disabled: true },
-];
-
 export default {
   title: 'shared/ListBox',
   component: ListBox,
@@ -19,14 +11,62 @@ export default {
       control: 'color',
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: 100 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta<typeof ListBox>;
 
 const Template: StoryFn<typeof ListBox> = (args) => <ListBox {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-  label: 'ListBoxLabel',
-  items: people,
-  value: people[0].value,
-  onChange: (value) => void value,
+  value: '123',
+  items: [
+    { content: '1asfasfasf23', value: '123' },
+    { content: '1asfasfasf21233', value: '1232' },
+  ],
+};
+
+export const topLeft = Template.bind({});
+topLeft.args = {
+  direction: 'top left',
+  value: '123',
+  items: [
+    { content: '1asfasfasf23', value: '123' },
+    { content: '1asfasfasf21233', value: '1232' },
+  ],
+};
+
+export const topRight = Template.bind({});
+topRight.args = {
+  direction: 'top right',
+  value: '123',
+  items: [
+    { content: '1asfasfasf23', value: '123' },
+    { content: '1asfasfasf21233', value: '1232' },
+  ],
+};
+
+export const bottomLeft = Template.bind({});
+bottomLeft.args = {
+  direction: 'bottom left',
+  value: '123',
+  items: [
+    { content: '1asfasfasf23', value: '123' },
+    { content: '1asfasfasf21233', value: '1232' },
+  ],
+};
+
+export const bottomRight = Template.bind({});
+bottomRight.args = {
+  direction: 'bottom right',
+  value: '123',
+  items: [
+    { content: '1asfasfasf23', value: '123' },
+    { content: '1asfasfasf21233', value: '1232' },
+  ],
 };
