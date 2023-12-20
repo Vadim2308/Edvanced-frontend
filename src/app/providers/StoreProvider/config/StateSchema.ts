@@ -8,18 +8,20 @@ import type {
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
-import type { ProfileSchema } from 'entities/Profile';
 import type { AxiosInstance } from 'axios';
 import type { ArticleDetailsSchema } from 'entities/Article';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { UISchema } from 'features/UI';
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
+import { rtkApi } from 'shared/api/rtkApi';
+import type { ProfileSchema } from 'features/editableProfileCard';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
   ui: UISchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   // Асинхронные редьюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
