@@ -10,10 +10,10 @@ export function buildCssLoaders(isDev: boolean) {
   return {
     test: /\.s[ac]ss$/i,
     use: [
-      isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // Важно сохранять порядок.'style-loader' - позяволяет импортировать css (import "./style.css")  MiniCssExtractPlugin.loader забирает из js файла стили, а потом уже делаем дальнейшие преобразования. В дев сборках это не нужно
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // Инжектирует стили в DOM. Важно сохранять порядок.'style-loader' - нужен нам для инджекта стилей в head. MiniCssExtractPlugin.loader забирает из js файла стили, а потом уже делаем дальнейшие преобразования. В дев сборках это не нужно
       {
-        // Добавляем поддержку модулей в проект
-        loader: 'css-loader', // Translates CSS into CommonJS
+        // Добавляем поддержку css в проект. Умеет читать css, умеет читать все импорты внутри css, но он не занимается инъекцией наших стилей в DOM. Он просто грамотно обрабатывает css файлы
+        loader: 'css-loader', // css-loader, для того, чтобы мы могли импортировать css в js
         options: {
           modules: {
             auto: (resPath: string) => Boolean(resPath.includes('.module.')), // Необходимо чтоб имена уникальные имена для стилей создавались только для файлов, которые имеют somename.module.scss.
