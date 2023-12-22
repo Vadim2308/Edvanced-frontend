@@ -91,12 +91,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
         </HStack>
       )}
       <Input
+        data-testid='ProfileCard.firstname'
         value={data?.first}
         placeholder={t('Ваше имя')}
         onChange={onChangeFirstname}
         readonly={readonly}
       />
       <Input
+        data-testid='ProfileCard.lastname'
         value={data?.lastname}
         placeholder={t('Ваша фамилия')}
         onChange={onChangeLastname}

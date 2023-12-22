@@ -2,7 +2,7 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-
+import 'cross-fetch';
 import path from 'path';
 
 export default {
@@ -61,7 +61,7 @@ export default {
       {
         publicPath: '<rootDir>/reports/unit',
         filename: 'report.html',
-        openReport: true,
+        openReport: false,
         inlineSource: true,
       },
     ],
