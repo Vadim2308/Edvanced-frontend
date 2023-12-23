@@ -18,11 +18,11 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   const cssLoader = buildCssLoaders(isDev);
 
   // Если не используем TS - то нужен babel-loader. А так он умеет работать с tsx/jsx
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+  // const typescriptLoader = {
+  //   test: /\.tsx?$/,
+  //   use: 'ts-loader',
+  //   exclude: /node_modules/,
+  // };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i, // Картинки, шрифты, и т.д. Можно импортить (н-р import AvatarImg from './storybook.jpeg') и в AvatarImg будет храниться ссылка на эту картинку
@@ -33,5 +33,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
+  return [fileLoader, svgLoader, babelLoader, cssLoader];
 }

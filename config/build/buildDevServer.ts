@@ -5,7 +5,7 @@ export function buildDevServer(options: BuildOptions): DevServerConfigurations {
   return {
     https: false,
     port: options.port,
-    open: true, // Автоматически открывать в браузере страницу с приложением,
+    open: false, // Автоматически открывать в браузере страницу с приложением,
     historyApiFallback: true, // При выключенной опции, даже когда в роутере приложения все норм,
     // в дев сервере нельзя зайти на любой роут кроме главного, выкидывает ошибку.
     // В приложение можно попасть только через главную страницу.
