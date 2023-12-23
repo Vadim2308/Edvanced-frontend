@@ -15,7 +15,7 @@ export function buildBabelLoader(options: BuildOptions) {
           [
             '@babel/preset-react',
             {
-              runtime: options.isDev ? 'automatic' : 'classic',
+              runtime: 'automatic', // Отвечает, чтоб в билде не падало по ошибке React is not defined
             },
           ],
         ],
