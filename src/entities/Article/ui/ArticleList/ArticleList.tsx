@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { HTMLAttributeAnchorTarget, memo } from 'react';
+import { HTMLAttributeAnchorTarget, type LegacyRef, memo } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { List, ListRowRenderer, WindowScroller } from 'react-virtualized';
@@ -48,7 +48,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
   const isBig = view === ArticleView.BIG;
 
-  const { clientWidth } = pageRef;
+  const { clientWidth = 1024 } = pageRef ?? {};
 
   const totalElementInRow = Math.abs(Math.ceil((clientWidth - 45 - 20) / 300)); // P.S костыли, Необходимо считать ширину карточки не на хардкорных значениях
   // eslint-disable-next-line no-nested-ternary
@@ -80,7 +80,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   };
 
   return (
-    // P.S. дикие костыли с хардкодами в курсе. Для вирт.скролла использовать более новые библиотеки
+    // P.S. дикие костыли с хардкодами в курсе. Для вирт.скролла использовать более новые библиотеки (react virtuoso)
     <WindowScroller scrollElement={pageRef}>
       {({
         width,
@@ -91,7 +91,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         onChildScroll,
       }) => (
         <div
-          ref={registerChild}
+          ref={registerChild as unknown as LegacyRef<HTMLDivElement>}
           className={classNames(cls.wrapper, {}, [className, cls[view]])}
         >
           {virtualized ? (
