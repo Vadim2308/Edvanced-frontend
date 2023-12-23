@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import {
-  Article,
+  type Article,
   ArticleView,
   ArticleSortField,
   ArticleType,

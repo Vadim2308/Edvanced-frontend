@@ -3,7 +3,7 @@ import { ArticleView } from 'entities/Article';
 import {
   ArticleSortField,
   ArticleType,
-} from 'entities/Article/model/types/article';
+} from 'entities/Article/model/consts/consts';
 
 export const getArticlesPageState = (state: StateSchema) => state.articlesPage;
 
