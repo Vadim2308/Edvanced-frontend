@@ -1,13 +1,7 @@
 import { classNames } from 'shared/lib/classNames';
-import React, {
-  MutableRefObject,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { ReactNode } from 'react';
 import type { Mods } from 'shared/lib/classNames/classNames';
+import { useModal } from 'shared/lib/hooks/useModal';
 import { Overlay } from '../Overlay/Overlay';
 import cls from './Modal.module.scss';
 
@@ -24,45 +18,13 @@ const ANIMATION_DELAY = 200;
 export const Modal = (props: ModalProps) => {
   const { className, children, isOpen, onClose, lazy } = props;
 
-  const [isClosing, setIsClosing] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const { isMounted, close, isClosing } = useModal({
+    animationDelay: ANIMATION_DELAY,
+    isOpen,
+    onClose,
+  });
 
-  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
-
-  const closeHandler = useCallback(() => {
-    setIsClosing(true);
-    if (onClose) {
-      timerRef.current = setTimeout(() => {
-        onClose();
-        setIsClosing(false);
-      }, ANIMATION_DELAY);
-    }
-  }, [onClose]);
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler();
-      }
-    },
-    [closeHandler],
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      setIsMounted(true);
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', onKeyDown);
-    }
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-      clearTimeout(timerRef.current);
-    };
-  }, [isOpen, onKeyDown]);
+  console.log({ isMounted, isClosing });
 
   const mods: Mods = {
     [cls.opened]: isOpen,
@@ -73,7 +35,7 @@ export const Modal = (props: ModalProps) => {
 
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
-      <Overlay onClick={closeHandler} />
+      <Overlay onClick={close} />
       <div className={classNames(cls.content)}>{children}</div>
     </div>
   );
