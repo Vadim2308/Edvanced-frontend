@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 import type { Mods } from 'shared/lib/classNames/classNames';
+import { Overlay } from '../Overlay/Overlay';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -63,10 +64,6 @@ export const Modal = (props: ModalProps) => {
     };
   }, [isOpen, onKeyDown]);
 
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
@@ -76,11 +73,8 @@ export const Modal = (props: ModalProps) => {
 
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
-      <div className={classNames(cls.overlay)} onClick={closeHandler}>
-        <div className={classNames(cls.content)} onClick={onContentClick}>
-          {children}
-        </div>
-      </div>
+      <Overlay onClick={closeHandler} />
+      <div className={classNames(cls.content)}>{children}</div>
     </div>
   );
 };
