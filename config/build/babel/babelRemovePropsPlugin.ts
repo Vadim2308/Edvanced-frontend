@@ -1,9 +1,9 @@
-import { PluginItem } from '@babel/core';
+import { type PluginItem } from '@babel/core';
 
 /**
  * Выпиливает ненужные атрибуты из билда
  */
-export default function (): PluginItem {
+function babelRemovePropsPlugin(): PluginItem {
   return {
     visitor: {
       Program(path, state) {
@@ -20,3 +20,4 @@ export default function (): PluginItem {
     },
   };
 }
+export default babelRemovePropsPlugin;
