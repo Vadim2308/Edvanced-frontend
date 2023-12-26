@@ -7,6 +7,8 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
     preferAbsolute: true, // Абсолютные пути в приоритете
     modules: [options.paths.src, 'node_modules'], // Пути, относительно которых будут пути абсолютные
     mainFiles: ['index'], // index считать главным файлом. Вроде не обязательная настройка
-    alias: {},
+    alias: {
+      '@': options.paths.src,
+    },
   };
 }

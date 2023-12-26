@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import React, { memo, MutableRefObject, ReactNode, useRef } from 'react';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll';
 import { useLocation } from 'react-router-dom';
-import { useScrollRestoration } from 'shared/lib/hooks/useScrollRestoration';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll';
+import { useScrollRestoration } from '@/shared/lib/hooks/useScrollRestoration';
 import cls from './Page.module.scss';
 
 interface PageProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 
-import type { Article } from 'entities/Article';
+import type { Article } from '@/entities/Article';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 export default {

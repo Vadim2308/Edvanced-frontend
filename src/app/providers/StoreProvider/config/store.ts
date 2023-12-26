@@ -1,10 +1,10 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
-import { userReducer } from 'entities/User';
-import { counterReducer } from 'entities/Counter';
-import { $api } from 'shared/api/api';
 import type { CombinedState, Reducer } from 'redux';
-import { uiReducer } from 'features/UI';
-import { rtkApi } from 'shared/api/rtkApi';
+import { userReducer } from '@/entities/User';
+import { counterReducer } from '@/entities/Counter';
+import { $api } from '@/shared/api/api';
+import { uiReducer } from '@/features/UI';
+import { rtkApi } from '@/shared/api/rtkApi';
 import type { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reduceManager';
 

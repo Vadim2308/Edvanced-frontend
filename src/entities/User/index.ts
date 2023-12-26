@@ -4,4 +4,4 @@ export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthDa
 export { getUserInited } from './model/selectors/getUserInited/getUserInited';
 export * from './model/selectors/roleSelectors';
 export { UserComponent } from './ui/User';
-export { UserRole } from 'entities/User/model/consts/consts';
+export { UserRole } from './model/consts/consts';
