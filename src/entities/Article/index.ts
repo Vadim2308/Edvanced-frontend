@@ -11,4 +11,10 @@ export {
   ArticleView,
   ArticleType,
   ArticleSortField,
+  ArticleBlockType,
 } from './model/consts/consts';
+export {
+  articleDetailsActions,
+  articleDetailsReducer,
+  articleDetailsSlice,
+} from './model/slice/articleDetailsSlice';

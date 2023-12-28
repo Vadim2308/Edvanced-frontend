@@ -9,7 +9,7 @@ import {
 } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
