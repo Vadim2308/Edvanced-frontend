@@ -18,6 +18,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config!.resolve!.modules = [paths.src, 'node_modules'];
   config!.resolve!.extensions!.push('.ts', '.tsx');
+  config!.resolve!.alias = {
+    ...config!.resolve!.alias,
+    '@': paths.src,
+  };
 
   // Убираем стандартный обработчик svg, который зашит в сторибуке, и заменяем неа свой
   // eslint-disable-next-line no-param-reassign
@@ -34,7 +38,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   });
-
   config.module!.rules.push({
     test: /\.scss$/,
     use: ['style-loader', 'css-loader', 'sass-loader'],
