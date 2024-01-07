@@ -77,6 +77,13 @@ module.exports = {
     'no-plusplus': 'off',
     'react/no-array-index-key': 'off',
     'study-type-checker/path-checker': ['error', { alias: '@' }],
+    'study-type-checker/layer-imports': [
+      'error',
+      {
+        alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+      },
+    ],
     'study-type-checker/public-api-imports': [
       'error',
       {

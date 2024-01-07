@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import ProfilePage from './ProfilePage';
+import { Theme } from '@/shared/const/theme';
 
 export default {
   title: 'pages/ProfilePage',
