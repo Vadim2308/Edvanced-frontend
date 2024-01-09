@@ -9,6 +9,7 @@ export function buildBabelLoader(options: BuildOptions) {
     use: {
       loader: 'babel-loader',
       options: {
+        cacheDirectory: true, // Включаем кэширование, ускоряет при этом ребилд
         presets: [
           '@babel/preset-env',
           '@babel/preset-typescript',

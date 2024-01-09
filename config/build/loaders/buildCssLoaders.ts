@@ -9,6 +9,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 export function buildCssLoaders(isDev: boolean) {
   return {
     test: /\.s[ac]ss$/i,
+    exclude: /node_modules/,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // Инжектирует стили в DOM. Важно сохранять порядок.'style-loader' - нужен нам для инджекта стилей в head. MiniCssExtractPlugin.loader забирает из js файла стили, а потом уже делаем дальнейшие преобразования. В дев сборках это не нужно
       {
