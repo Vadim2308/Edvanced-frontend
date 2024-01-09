@@ -24,8 +24,10 @@ module.exports = {
     'i18next',
     'react-hooks',
     'study-type-checker',
+    'unused-imports',
   ],
   rules: {
+    'unused-imports/no-unused-imports': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/jsx-indent': [2, 2],
