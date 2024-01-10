@@ -9,7 +9,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   const { isDev } = options;
   const svgLoader = {
     test: /\.svg$/, // Преобразовывает svg в реакт-компоненты. Только для svg. Обработать другие форматы он не сможет. Для других форматов юзаем file-loader
-    use: ['@svgr/webpack-222'],
+    use: ['@svgr/webpack'],
   };
 
   // Транспилирует код из ECMA 2015 на более ранние стандарты. Когда выкатывают новые фичи, не все браузеры сразу их поддерживают. Мы можем не ждать обновлений, а сразу использовать новые фичи стандартов. Babel также полифилит новые методы и т.д.
