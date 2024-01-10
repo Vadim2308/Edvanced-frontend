@@ -4,8 +4,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll';
 import { useScrollRestoration } from '@/shared/lib/hooks/useScrollRestoration';
 import cls from './Page.module.scss';
+import type { TestProps } from '@/shared/types/testing';
 
-interface PageProps {
+interface PageProps extends TestProps {
   children: ReactNode;
   onScrollEnd?: () => void;
   scrollRestoration?: boolean;
@@ -15,7 +16,13 @@ interface PageProps {
 export const PAGE_ID = 'PAGE_ID';
 
 export const Page = memo((props: PageProps) => {
-  const { className, children, onScrollEnd, scrollRestoration } = props;
+  const {
+    'data-testid': dataTestId,
+    className,
+    children,
+    onScrollEnd,
+    scrollRestoration,
+  } = props;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   const { pathname } = useLocation();
@@ -38,6 +45,7 @@ export const Page = memo((props: PageProps) => {
   return (
     <main
       id={PAGE_ID}
+      data-testid={dataTestId ?? 'Page'}
       ref={currentWrapperRef}
       className={classNames(cls.Page, {}, [className])}
     >
