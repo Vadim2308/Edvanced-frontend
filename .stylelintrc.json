@@ -1,8 +1,6 @@
 {
   "extends": "stylelint-config-standard-scss",
   "rules": {
-    "indentation": [2],
-    "selector-class-pattern": null,
-    "string-quotes": "single"
+    "selector-class-pattern": null
   }
 }

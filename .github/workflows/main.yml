@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install --force
+        run: npm install
       - name: linting typescript
         run: npm run lint:ts
         # if: always() -  Запускаем их в любом случае даже если предыдущий упад
