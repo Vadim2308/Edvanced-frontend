@@ -108,7 +108,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     );
   } else {
     content = (
-      <>
+      <div data-testid='ArticleDetails.Info'>
         <HStack justify='center' max>
           <Avatar size={200} src={article?.img} className={cls.avatar} />
         </HStack>
@@ -129,7 +129,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
           </HStack>
         </VStack>
         {article?.blocks.map(renderBlock)}
-      </>
+      </div>
     );
   }
 
