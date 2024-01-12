@@ -7,7 +7,8 @@ import {
 } from '@/entities/Article';
 import type { SortOrder } from '@/shared/types/sort';
 
-export interface ArticlesPageSchema extends EntityState<Article> {
+export interface ArticlesPageSchema
+  extends EntityState<Article, Article['id']> {
   isLoading?: boolean;
   error?: string;
   // pagination
