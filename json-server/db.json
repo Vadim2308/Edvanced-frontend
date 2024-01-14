@@ -748,6 +748,9 @@
       "username": "admin",
       "password": "123",
       "roles": ["ADMIN"],
+      "feature": {
+        "isArticleRatingEnabled": true
+      },
       "avatar": "https://yakutsk.ru/wp-content/uploads/2022/07/12/bystrov_haker.jpeg"
     },
     {
@@ -755,6 +758,9 @@
       "username": "user",
       "password": "123",
       "roles": ["USER"],
+      "feature": {
+        "isArticleRatingEnabled": true
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
@@ -762,6 +768,9 @@
       "username": "manager",
       "password": "123",
       "roles": ["MANAGER"],
+      "feature": {
+        "isArticleRatingEnabled": false
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
@@ -769,6 +778,9 @@
       "username": "testuser",
       "password": "123",
       "roles": ["ADMIN"],
+      "feature": {
+        "isArticleRatingEnabled": false
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
