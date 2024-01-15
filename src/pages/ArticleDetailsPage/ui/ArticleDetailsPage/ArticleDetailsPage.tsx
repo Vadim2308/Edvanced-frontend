@@ -18,7 +18,8 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -47,13 +48,21 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     );
   }
 
+  const articleRatingCard = toggleFeatures({
+    name: 'isArticleRatingEnabled',
+    // eslint-disable-next-line react/no-unstable-nested-components
+    on: () => <ArticleRating articleId={id} />,
+    // eslint-disable-next-line react/no-unstable-nested-components
+    off: () => <Card>{t('Оценка статей скоро появится')}</Card>,
+  });
+
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <VStack gap='16' max>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
-          {isArticleRatingEnabled && <ArticleRating articleId={id} />}
+          {isArticleRatingEnabled && articleRatingCard}
           <ArticleRecommendationsList />
           <ArticleDetailsComments id={id} />
         </VStack>
