@@ -12,7 +12,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 - `npm run start` - Запуск frontend проекта на webpack dev server
 - `npm run start:vite` - Запуск frontend проекта на vite
 - `npm run start:dev` - Запуск frontend проекта на webpack dev server + backend
-- `npm run start:dev:vite` - Запуск frontend проекта на vite + backend
 - `npm run start:dev:server` - Запуск backend сервера
 - `npm run build:prod` - Сборка в prod режиме
 - `npm run build:dev` - Сборка в dev режиме (не минимизирован)
@@ -29,7 +28,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 - `npm run test:ui:html` - Генерация HTML отчета для скриншотных тестов
 - `npm run storybook` - запуск Storybook
 - `npm run storybook:build` - Сборка storybook билда
-- `npm run prepare` - прекоммит хуки
 - `npm run generate:slice` - Скрипт для генерации FSD слайсов
 
 ----

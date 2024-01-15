@@ -7,6 +7,9 @@ interface ToggleFeaturesOptions<T> {
   off: () => T;
 }
 
+/**
+ * Также можно сделать компонент с переключениями, см.урок 130
+ */
 export function toggleFeatures<T>({
   off,
   on,
